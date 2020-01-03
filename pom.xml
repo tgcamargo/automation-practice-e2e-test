@@ -1,0 +1,81 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.hfchallenge</groupId>
+  <artifactId>web-test</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <name>web-test</name>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <junit.version>4.11</junit.version>
+    <selenium.version>3.11.0</selenium.version>
+    <javafaker.version>1.0.1</javafaker.version>
+    <extentreports.version>3.1.5</extentreports.version>
+    <commons-io.version>2.6</commons-io.version>
+    <maven-compiler.version>3.5.1</maven-compiler.version>
+    <maven-surefire.version>3.0.0-M4</maven-surefire.version>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-java</artifactId>
+      <version>${selenium.version}</version>
+    </dependency>
+    <!--    Used to generate  random values - Github: https://github.com/DiUS/java-faker-->
+    <dependency>
+      <groupId>com.github.javafaker</groupId>
+      <artifactId>javafaker</artifactId>
+      <version>${javafaker.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <!--    Used to generate a test report in HTML format - Path: target/testReport.html-->
+    <dependency>
+      <groupId>com.aventstack</groupId>
+      <artifactId>extentreports</artifactId>
+      <version>${extentreports.version}</version>
+    </dependency>
+    <!-- Used to generate screen captures - https://mvnrepository.com/artifact/commons-io/commons-io -->
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>${commons-io.version}</version>
+    </dependency>
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>${maven-compiler.version}</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>${maven-surefire.version}</version>
+        <!--        Added configuration to run the tests in parallel mode and property variables of the suite-->
+        <configuration>
+          <parallel>all</parallel>
+          <threadCount>10</threadCount>
+          <systemPropertyVariables>
+            <url>http://automationpractice.com</url>
+            <OS>linux</OS> <!--possible values: linux | macos | windows-->
+            <browser>chrome headless</browser> <!--possible values: chrome | firefox | ie | safari | chrome headless -->
+            <defaultUser.id>hf_challenge_123456@hf123456.com</defaultUser.id>
+            <defaultUser.pwd>12345678</defaultUser.pwd>
+            <defaultUser.fullName>Joe Black</defaultUser.fullName>>
+          </systemPropertyVariables>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
