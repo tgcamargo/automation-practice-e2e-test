@@ -7,7 +7,7 @@
   <name>web-test</name>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <junit.version>4.11</junit.version>
+    <junit.version>4.13.1</junit.version>
     <selenium.version>3.11.0</selenium.version>
     <javafaker.version>1.0.1</javafaker.version>
     <extentreports.version>3.1.5</extentreports.version>
